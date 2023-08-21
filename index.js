@@ -26,7 +26,6 @@ lambdaHandler = async(event) => {
         body: JSON.stringify(
             {
                 message: greeting,
-                input: event,
             },
             null,
             2

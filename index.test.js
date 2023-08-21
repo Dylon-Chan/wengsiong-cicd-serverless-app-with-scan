@@ -33,7 +33,6 @@ test ('lambdaHandler returns correct response structure', async() => {
     const body = JSON.parse(result.body);
 
     expect(body).toHaveProperty('message');
-    expect(body).toHaveProperty('input', event);
 });
 
 test('lambdaHandler returns correct greeting in message', async() => {
