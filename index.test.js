@@ -8,14 +8,14 @@ test.each([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])(
 );
 
 test.each([12, 13, 14, 15, 16, 17])(
-    'returns Good morning for hours between than 12 and 17 when hour is %i',
+    'returns Good afternoon for hours between than 12 and 17 when hour is %i',
     (hour) => {
         expect(getGreeting(hour)).toBe('Good afternoon');
     }
 );
 
 test.each([18, 19, 20, 21, 22, 23])(
-    'returns Good morning for hours between than 12 and 17 when hour is %i',
+    'returns Good evening for hours greater than 17 when hour is %i',
     (hour) => {
         expect(getGreeting(hour)).toBe('Good evening');
     }
