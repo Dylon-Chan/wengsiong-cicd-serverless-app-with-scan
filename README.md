@@ -169,9 +169,10 @@ git push --set-upstream origin dev
 
 ### Setup AWS Lambda Deployment using Serverless Framework
 
-1. Install the Serverless Framework globally.
+1. Install the Serverless Framework globally and the plugin for offline development.
 ```bash
 npm install -g serverless
+npm install --savedev serverless-offline
 ```
 2. Create a new Serverless configuration file named `serverless.yml` with the code below. This file dictates how the Serverless Framework should deploy the application to AWS Lambda.
 ```yaml
