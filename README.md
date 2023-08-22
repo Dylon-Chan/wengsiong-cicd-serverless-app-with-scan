@@ -54,7 +54,7 @@ npm install date-fns date-fns-tz  # Install date-fns and date-fns-tz
 
 1. To set up the testing environment, install the required testing framework and utilities:
 ```bash
-npm install --save-dev jest supertest
+npm install --save-dev jest
 ```
 2. Modify and update the package.json file to add the test script.
 ```json
