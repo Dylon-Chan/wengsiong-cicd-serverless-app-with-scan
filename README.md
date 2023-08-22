@@ -264,6 +264,39 @@ AWS Secrets Manager provides a centralized service to manage sensitive informati
 
 ![application-response](./images/application-response.png)
 
+### Implementing Vulnerability Monitoring with Snyk
+
+1. Add the following code for the new job `post-deploy-monitoring` to `.github/workflows/nodejs.yml`. This job will trigger after the application is deployed and use Snyk to monitor the application dependecies' vulnerabilities.
+```yaml
+  post-deploy-monitor:
+    runs-on: ubuntu-latest
+    needs: deploy
+    steps:
+      - name: Checkout repo code
+        uses: actions/checkout@v3
+      - name: Run Snyk to monitor vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: monitor
+```
+2. Commit and push the changes to the `dev` branch.
+3. Navigate to the Actions tab of the repository to check the workflow's progress.
+4. You should see the workflow running with the test and scans passed as shown below.
+
+![workflow-16](./images/workflow-16.png)
+
+5. Click on the snapshot link provided in the workflow log. This link will take you to the vulnerability report in Snyk.
+
+![snyk-snapshot](./images/snyk-snapshot.png)
+
+6. You can continuously monitor the application's vulnerabilities within the Snyk platform as shown below.
+
+![snyk-monitoring](./images/snyk-monitoring.png)
+
+7. Snyk will also send email notifications to the registered email address whenever new vulnerabilities are detected.
+
 ## Next Steps
 
 1. Monitoring and Logging: 
@@ -287,5 +320,5 @@ Congratulations on setting up a CI/CD pipeline for your serverless Node.js appli
 - https://www.serverless.com/framework/docs/getting-started
 - https://dev.to/aws-builders/setup-cicd-for-your-aws-lambda-with-serverless-framework-and-github-actions-4f12
 - https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieving-secrets_github.html
-
+- https://snyk.io/blog/building-a-secure-pipeline-with-github-actions/
 
