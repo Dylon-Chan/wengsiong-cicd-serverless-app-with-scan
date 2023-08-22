@@ -73,6 +73,13 @@ npm install --save-dev jest
 git checkout -b dev 
 ```
   - `git checkout` is used to switch from one branch to another and `-b` flag is  indicating that a new branch should be created. Hence, `git checkout -b dev` will create a new branch named `dev` and immediately switch to this new branch.
+2. Configure branch protection for `main` by setting rules in Github repository settings:
+    - Navigate to the repository settings and select `Branches` option from the left panel.
+    - Click on the `Add rule` button to set up protection rules.
+    - Enter `main` for the branch name pattern.
+    - Select the following option:
+      - "Require pull request reviews before merging"
+    - Confirm the configuration by clicking the Create button.
 
 ### Set up Github Action workflow:
 
@@ -117,7 +124,7 @@ git add .
 git commit -m "Add Github Action workflow"
 git push --set-upstream origin dev
 ```
-3.Navigate to the Actions tab within the GitHub repository to monitor the status of the workflow.
+3. Navigate to the Actions tab within the GitHub repository to monitor the status of the workflow.
 4. You should see the workflow running and the test passed as shown below.
 5. Create a pull request to merge the updates from the `dev` branch into the `main` branch.
 
